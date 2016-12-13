@@ -30,7 +30,11 @@ function Get-Cmd64 {
 32ビット版 cmd を実行します
 #>
 function Invoke-Cmd32 {
-    & ($Cmd32).SHELL $args
+    if ($Cmd32) {
+        & ($Cmd32).SHELL $args
+    } else {
+        Write-Error 'Cmd(x86) No Found'
+    }
 }
 
 <#
