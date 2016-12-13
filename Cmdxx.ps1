@@ -11,6 +11,7 @@ function Get-Cmd64 {
     if ([Environment]::Is64BitProcess) {
         @{SHELL = "$env:SystemRoot\System32\cmd.exe"}
     } else {
+        # for windows 32bit
         "$env:SystemRoot\sysnative\cmd.exe" |
             Where {Test-Path $_} |
             ForEach {@{SHELL = $_}}
@@ -35,7 +36,7 @@ function Invoke-Cmd64 {
     if ($Cmd64) {
         & ($Cmd64).SHELL $args
     } else {
-        Write-Error 'Cmd64 No Found'
+        Write-Error 'Cmd(x64) No Found'
     }
 }
 
