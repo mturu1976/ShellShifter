@@ -32,6 +32,7 @@ function Get-PowerShell64 {
     if ([Environment]::Is64BitProcess) {
         @{SHELL = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"}
     } else {
+        # for windows 32bit
         "$env:SystemRoot\sysnative\WindowsPowerShell\v1.0\powershell.exe" |
             Where {Test-Path $_} | 
             ForEach { @{SHELL = $_} }
@@ -41,5 +42,5 @@ function Get-PowerShell64 {
 $PowerShell32 = Get-PowerShell32
 $PowerShell64 = Get-PowerShell64
 
-Set-Alias -Name powershell32 -Value Invoke-PowerShell32
-Set-Alias -Name powershell64 -Value Invoke-PowerShell64
+Set-Alias -Name posh32 -Value Invoke-PowerShell32
+Set-Alias -Name posh64 -Value Invoke-PowerShell64
