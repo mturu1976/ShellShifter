@@ -72,6 +72,9 @@ function Invoke-Cygwin {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'Bash Not Found'
         }
+        if (!$ENV:LANG) {$ENV:LANG = 'ja_JP.UTF-8'}
+        if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}
+        if (!$ENV:DISPLAY) {$ENV:DISPLAY = ':0.0'}
         $env:CHERE_INVOKING = 'true'
         & ($_.Shell) --login $Options
     } else {
