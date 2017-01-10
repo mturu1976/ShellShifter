@@ -14,8 +14,8 @@
     # check registory of uninstall
     $reg = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
     Get-ChildItem -Path $reg |
-        Where {$_.GetValue('Publisher') -eq 'The MSYS2 Developers'} |
-        ForEach {
+        Where-Object {$_.GetValue('Publisher') -eq 'The MSYS2 Developers'} |
+        ForEach-Object {
             $root = $_.GetValue('InstallLocation')
             $bash = Join-Path $root '/usr/bin/bash.exe'
             if (Test-Path $bash) {
@@ -29,7 +29,7 @@
 }
 
 function Invoke-MsysShell ([string[]]$Options) {
-    $_ = Get-Msys | Select -First 1
+    $_ = Get-Msys | Select-Object -First 1
     if ($_) {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'Bash Not Found'

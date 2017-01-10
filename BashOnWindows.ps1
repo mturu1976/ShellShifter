@@ -2,12 +2,12 @@
 function Get-BashOnWindows {
     if ([Environment]::Is64BitProcess) {
         "$env:SystemRoot\System32\bash.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     } else {
         "$env:SystemRoot\sysnative\bash.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     }
 }
 

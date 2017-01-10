@@ -2,25 +2,25 @@
 function Get-Cmd32 {
     if ([Environment]::Is64BitProcess) {
         "$env:SystemRoot\SysWOW64\cmd.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     } else {
         "$env:SystemRoot\System32\cmd.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     }
 }
 
 function Get-Cmd64 {
     if ([Environment]::Is64BitProcess) {
         "$env:SystemRoot\System32\cmd.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     } else {
         # for windows 32bit
         "$env:SystemRoot\sysnative\cmd.exe" |
-            Where {Test-Path $_} |
-            ForEach {@{SHELL = $_}}
+            Where-Object {Test-Path $_} |
+            ForEach-Object {@{SHELL = $_}}
     }
 }
 

@@ -2,7 +2,7 @@
     # check uninstall registory 
     $reg = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Git_is*'
     Get-ChildItem -Path $reg | 
-        ForEach {
+        ForEach-Object {
             $root = $_.GetValue('InstallLocation')
             $bash = Join-Path $root '/usr/bin/bash.exe'
             if (Test-Path $bash) {
@@ -25,7 +25,7 @@ function Invoke-GitBash {
         [parameter(ValueFromRemainingArguments = $true, Position = 0)]
         [string[]]$Options = @()
     )
-    $_ = Get-GitBash | Select -First 1
+    $_ = Get-GitBash | Select-Object -First 1
     if ($_) {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'GitBash Not Found'

@@ -44,3 +44,4 @@ $PowerShell64 = Get-PowerShell64
 
 Set-Alias -Name posh32 -Value Invoke-PowerShell32
 Set-Alias -Name posh64 -Value Invoke-PowerShell64
+
