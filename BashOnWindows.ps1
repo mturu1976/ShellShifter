@@ -1,14 +1,18 @@
 ﻿
 function Get-BashOnWindows {
-    if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\System32\bash.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+    $shell = if ([Environment]::Is64BitProcess) {
+        "$env:SystemRoot\System32\bash.exe"
     } else {
-        "$env:SystemRoot\sysnative\bash.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+        "$env:SystemRoot\sysnative\bash.exe"
     }
+    @($shell |
+        Where-Object {Test-Path $_} |
+        ForEach-Object {
+            [ShellShifterInfomation]::new(
+                'bow',
+                $_
+            )
+        })
 }
 
 <#
@@ -18,7 +22,7 @@ Bash on Unbuntu on Windows を実行します
 #>
 function Invoke-BashOnWindows {
     if ($Bow) {
-        & ($Bow).SHELL $args
+        & ($Bow).Shell $args
     } else {
         Write-Error 'Bash On Windows No Found'
     }

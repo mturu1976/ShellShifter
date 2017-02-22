@@ -1,27 +1,40 @@
 ﻿
+
 function Get-Cmd32 {
-    if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\SysWOW64\cmd.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+    $shell = if ([Environment]::Is64BitProcess) {
+        "$env:SystemRoot\SysWOW64\cmd.exe"
     } else {
-        "$env:SystemRoot\System32\cmd.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+        "$env:SystemRoot\System32\cmd.exe"
     }
+    @($shell |
+        Where-Object {Test-Path $_} |
+        ForEach-Object {
+            [ShellShifterInfomation]::new(
+                'cmd32',
+                $_
+            )
+        })
 }
 
 function Get-Cmd64 {
-    if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\System32\cmd.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+    $shell = if ([Environment]::Is64BitProcess) {
+        "$env:SystemRoot\System32\cmd.exe"
     } else {
-        # for windows 32bit
-        "$env:SystemRoot\sysnative\cmd.exe" |
-            Where-Object {Test-Path $_} |
-            ForEach-Object {@{SHELL = $_}}
+        "$env:SystemRoot\sysnative\cmd.exe"
     }
+    @($shell |
+        Where-Object {Test-Path $_} |
+        ForEach-Object {
+            [ShellShifterInfomation]::new(
+                'cmd64',
+                $_
+            )
+        })
+}
+
+function Get-Cmd {
+    Get-Cmd32
+    Get-Cmd64
 }
 
 <#

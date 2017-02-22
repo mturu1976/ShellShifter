@@ -1,10 +1,12 @@
-﻿<#
+﻿using namespace System.Collections.Generic
+
+<#
 .SYNOPSIS 32ビット版 powershell を実行します
 .DESCRIPTION
 32ビット版 powershell を実行します
 #>
 function Invoke-PowerShell32 {
-    & ($PowerShell32).SHELL $args
+    & ($PowerShell32).Shell $args
 }
 
 <#
@@ -14,29 +16,50 @@ function Invoke-PowerShell32 {
 #>
 function Invoke-PowerShell64 {
     if ($PowerShell64) {
-        & ($PowerShell64).SHELL $args
+        & ($PowerShell64).Shell $args
     } else {
         Write-Error 'PowerShell64 No Found'
     }
 }
 
-function Get-PowerShell32 {
-    if ([Environment]::Is64BitProcess) {
-        @{SHELL = "$env:SystemRoot\SysWOW64\WindowsPowerShell\v1.0\powershell.exe"}
+function Get-PowerShell32() {
+    $shell = if ([Environment]::Is64BitProcess) {
+        "$env:SystemRoot\SysWOW64\WindowsPowerShell\v1.0\powershell.exe"
     } else {
-        @{SHELL = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"}
-    }
+        "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    }   
+    @($shell |
+        Where-Object {Test-Path $_} | 
+        ForEach-Object {
+            [ShellShifterInfomation]::new(
+                'posh32',
+                $_
+            )
+        }
+    )
+    return $ret
 }
 
 function Get-PowerShell64 {
-    if ([Environment]::Is64BitProcess) {
-        @{SHELL = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"}
+    $shell = if ([Environment]::Is64BitProcess) {
+        "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
     } else {
-        # for windows 32bit
-        "$env:SystemRoot\sysnative\WindowsPowerShell\v1.0\powershell.exe" |
-            Where {Test-Path $_} | 
-            ForEach { @{SHELL = $_} }
-    }
+        "$env:SystemRoot\sysnative\WindowsPowerShell\v1.0\powershell.exe"
+    }   
+    @($shell |
+        Where-Object {Test-Path $_} | 
+        ForEach-Object {
+            [ShellShifterInfomation]::new(
+                'posh64',
+                $_
+            )
+        }
+    )
+}
+
+function Get-PowerShell {
+    Get-PowerShell32
+    Get-PowerShell64
 }
 
 $PowerShell32 = Get-PowerShell32
