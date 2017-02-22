@@ -104,18 +104,6 @@ function Invoke-Mingw64 {
     Invoke-MsysShell $Options
 }
 
-function msys {
-    Invoke-Msys $args
-}
-
-function mingw32 {
-    Invoke-Mingw32 $args
-}
-
-function mingw64 {
-    Invoke-Mingw64 $args
-}
-
 Set-Alias -Name msys -Value Invoke-Msys
 Set-Alias -Name mingw64 -Value Invoke-Mingw64
 Set-Alias -Name mingw32 -Value Invoke-Mingw32 
