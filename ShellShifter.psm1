@@ -11,10 +11,10 @@
 
 function Get-ShellShifter {
     if (Get-PowerShell32) {
-        write-host 'powershell32'
+        write-host 'posh32'
     }
     if (Get-PowerShell64) {
-        write-host 'powershell64'
+        write-host 'posh64'
     }
     if (Get-Cmd32) {
         write-host 'cmd32'
