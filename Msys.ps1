@@ -37,7 +37,12 @@ function Invoke-MsysShell ([string[]]$Options) {
         # see /etc/profile
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''
-        & ($_.Shell) --login $Options
+        if ($Options -contains  '--no-login') {
+            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
+            & ($_.Shell) $Options
+        } else {
+            & ($_.Shell) --login $Options
+        }
     } else {
         Write-Error "$env:MSYSTEM Not Found"
     }

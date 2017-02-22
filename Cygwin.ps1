@@ -67,7 +67,7 @@ function Invoke-Cygwin {
         [parameter(ValueFromRemainingArguments = $true, Position = 0)]
         [string[]]$Options = @()
     )
-    $_ = Get-Cygwin | Select -First 1
+    $_ = Get-Cygwin | Select-Object -First 1
     if ($_) {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'Bash Not Found'
@@ -76,7 +76,12 @@ function Invoke-Cygwin {
         if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}
         if (!$ENV:DISPLAY) {$ENV:DISPLAY = ':0.0'}
         $env:CHERE_INVOKING = 'true'
-        & ($_.Shell) --login $Options
+        if ($Options -contains '--no-login') {
+            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
+            & ($_.Shell) $Options
+        } else {
+            & ($_.Shell) --login $Options
+        }
     } else {
         Write-Error "Cygwin Not Found"
     }

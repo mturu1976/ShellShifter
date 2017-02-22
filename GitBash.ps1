@@ -34,7 +34,12 @@ function Invoke-GitBash {
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''
         $env:MSYSTEM = 'MINGW64'
-        & ($_.Shell) --login $Options
+        if ($Options -contains  '--no-login') {
+            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
+            & ($_.Shell) $Options
+        } else {
+            & ($_.Shell) --login $Options
+        }
     } else {
         Write-Error "GitBash Not Found"
     }
