@@ -30,6 +30,7 @@ function Invoke-GitBash {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'GitBash Not Found'
         }
+        $Env:Path = (join-path $_.Path '/usr/bin') + ';'　+ $Env:Path
         # see /etc/profile
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''

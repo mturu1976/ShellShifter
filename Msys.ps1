@@ -34,6 +34,7 @@ function Invoke-MsysShell ([string[]]$Options) {
         if (!(Test-Path $_.Shell)) {
             Write-Error 'Bash Not Found'
         }
+        $Env:Path = (join-path $_.Path '/usr/bin') + ';'　+ $Env:Path
         # see /etc/profile
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''
@@ -44,7 +45,7 @@ function Invoke-MsysShell ([string[]]$Options) {
             & ($_.Shell) --login $Options
         }
     } else {
-        Write-Error "$env:MSYSTEM Not Found"
+        Write-Error "Msys Not Found"
     }
 }
 
