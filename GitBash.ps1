@@ -12,13 +12,6 @@
                 $shell,
                 (Join-Path $reg (Split-Path -Leaf $_))
             ))
-            # if (Test-Path $bash) {
-            #     @{
-            #         Path = $root
-            #         Shell = $bash
-            #         Note = @((Join-Path $reg (Split-Path -Leaf $_)), 'InstallLocation') 
-            #     }
-            # }
         }
     $shells | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
@@ -29,25 +22,43 @@
 GitBash の Mingw64 を実行します
 #>
 function Invoke-GitBash {
-    param(
-        [parameter(ValueFromRemainingArguments = $true, Position = 0)]
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
-    $_ = Get-GitBash
-    if ($_) {
-        $Env:Path = (join-path (Split-Path $_.Shell) '/usr/bin') + ';'　+ $Env:Path
-        # see /etc/profile
-        $env:CHERE_INVOKING = 'true'
-        $env:MSYS2_PATH_TYPE = ''
-        $env:MSYSTEM = 'MINGW64'
-        if ($Options -contains  '--no-login') {
-            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
-            & ($_.Shell) $Options
-        } else {
-            & ($_.Shell) --login $Options
+    begin {
+        $this = Get-GitBash
+        if (!$this) {
+            Write-Error 'Command Not Found'
+            return
         }
-    } else {
-        Write-Error "GitBash Not Found"
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        $Options = if ($Options -contains '--no-login') {
+            $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
+        } else {
+            '--login'
+            $Options
+        }
+
+        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        # see /etc/profile
+        $ENV:CHERE_INVOKING = 'true'
+        $ENV:MSYS2_PATH_TYPE = ''
+        $ENV:MSYSTEM = 'MINGW64'
+
+        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path       
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 

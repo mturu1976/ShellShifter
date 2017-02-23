@@ -44,7 +44,7 @@
         }
     }
 
-    $shells | Where-Object {$_ -and (Test-Path $_.Shell)}
+    $shells | Where-Object {$_ -and (Test-Path $_.Shell)} | Select-Object -First 1
 }
 
 <#
@@ -63,28 +63,42 @@ Cygwin の bash を実行します
 .LINK Nothing
 #>
 function Invoke-Cygwin {
-    param(
-        [parameter(ValueFromRemainingArguments = $true, Position = 0)]
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
-    $_ = Get-Cygwin | Select-Object -First 1
-    if ($_) {
-        if (!(Test-Path $_.Shell)) {
-            Write-Error 'Bash Not Found'
+    begin {
+        $this = Get-Cygwin
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
         }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        $ENV:CHERE_INVOKING = 'true'
         # if (!$ENV:LANG) {$ENV:LANG = 'ja_JP.UTF-8'}
         # if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}
         # if (!$ENV:DISPLAY) {$ENV:DISPLAY = ':0.0'}
-        $env:CHERE_INVOKING = 'true'
-        if ($Options -contains '--no-login') {
-            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
-            & ($_.Shell) $Options
+
+        $Options = if ($Options -contains '--no-login') {
+            $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
         } else {
-            & ($_.Shell) --login $Options
+            '--login'
+            $Options
         }
-    } else {
-        Write-Error "Cygwin Not Found"
-    }
+
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
+    }    
 }
 
 Set-Alias -Name cygwin -Value Invoke-Cygwin

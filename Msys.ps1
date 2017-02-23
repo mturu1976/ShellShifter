@@ -51,21 +51,43 @@
         }
 }
 
-function Invoke-MsysShell ([string[]]$Options) {
-    $_ = Get-Msys | Where-Object {$_.Command -eq 'msys'}
-    if ($_) {
-        $Env:Path = (join-path (Split-Path $_.Shell) '/usr/bin') + ';'　+ $Env:Path       
+function Invoke-MsysWrap {
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$Options = @()
+    )
+    begin {
+        $this = Get-Msys | Where-Object {$_.Command -eq 'msys'}
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
         # see /etc/profile
+        # $ENV:MSYSTEM = 'MSYS'
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''
-        if ($Options -contains  '--no-login') {
-            $Options = $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
-            & ($_.Shell) $Options
+
+        $Options = if ($Options -contains '--no-login') {
+            $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
         } else {
-            & ($_.Shell) --login $Options
+            '--login'
+            $Options
         }
-    } else {
-        Write-Error "Msys Not Found"
+
+        $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path       
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 
@@ -85,12 +107,24 @@ Msys2 の bash を実行します
 .LINK Nothing
 #>
 function Invoke-Msys {
-    param(
-        [parameter(ValueFromRemainingArguments = $true, Position = 0)]
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
-    $env:MSYSTEM = 'MSYS'
-    Invoke-MsysShell $Options
+    process {
+        $stdins += $_
+    }
+    end {
+        $ENV:MSYSTEM = 'MSYS'
+        if ($stdins) {
+            $stdins | Invoke-MsysWrap $Options
+        } else {
+            Invoke-MsysWrap $Options
+        }
+    }
 }
 
 <#
@@ -101,12 +135,24 @@ Msys2 の Mingw32 を実行します
 see Invoke-Msys
 #>
 function Invoke-Mingw32 {
-    param(
-        [parameter(ValueFromRemainingArguments = $true, Position = 0)]
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
-    $env:MSYSTEM = 'MINGW32'
-    Invoke-MsysShell $Options
+    process {
+        $stdins += $_
+    }
+    end {
+        $ENV:MSYSTEM = 'MINGW32'
+        if ($stdins) {
+            $stdins | Invoke-MsysWrap $Options
+        } else {
+            Invoke-MsysWrap $Options
+        }
+    }
 }
 
 <#
@@ -117,12 +163,24 @@ Msys2 の Mingw64 を実行します
 see Invoke-Msys
 #>
 function Invoke-Mingw64 {
-    param(
-        [parameter(ValueFromRemainingArguments = $true, Position = 0)]
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
-    $env:MSYSTEM = 'MINGW64'
-    Invoke-MsysShell $Options
+    process {
+        $stdins += $_
+    }
+    end {
+        $ENV:MSYSTEM = 'MINGW64'
+        if ($stdins) {
+            $stdins | Invoke-MsysWrap $Options
+        } else {
+            Invoke-MsysWrap $Options
+        }
+    }
 }
 
 Set-Alias -Name msys -Value Invoke-Msys

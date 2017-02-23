@@ -45,10 +45,29 @@ function Get-Cmd {
 32ビット版 cmd を実行します
 #>
 function Invoke-Cmd32 {
-    if ($Cmd32) {
-        & ($Cmd32).SHELL $args
-    } else {
-        Write-Error 'Cmd(x86) No Found'
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$Options = @()
+    )
+    begin {
+        $this = $Cmd32
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 
@@ -58,10 +77,29 @@ function Invoke-Cmd32 {
 64ビット版 cmd を実行します
 #>
 function Invoke-Cmd64 {
-    if ($Cmd64) {
-        & ($Cmd64).SHELL $args
-    } else {
-        Write-Error 'Cmd(x64) No Found'
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline=$True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$options = @()
+    )
+    begin {
+        $this = $Cmd64
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 

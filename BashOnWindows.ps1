@@ -22,10 +22,29 @@ function Get-BashOnWindows {
 Bash on Unbuntu on Windows を実行します
 #>
 function Invoke-BashOnWindows {
-    if ($Bow) {
-        & ($Bow).Shell $args
-    } else {
-        Write-Error 'Bash On Windows No Found'
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$Options = @()
+    )
+    begin {
+        $this = $Bow
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 

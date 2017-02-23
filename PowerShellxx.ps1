@@ -6,7 +6,30 @@
 32ビット版 powershell を実行します
 #>
 function Invoke-PowerShell32 {
-    & ($PowerShell32).Shell $args
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$Options = @()
+    )
+    begin {
+        $this = $PowerShell32
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
+    }
 }
 
 <#
@@ -15,10 +38,29 @@ function Invoke-PowerShell32 {
 64ビット版 powershell を実行します
 #>
 function Invoke-PowerShell64 {
-    if ($PowerShell64) {
-        & ($PowerShell64).Shell $args
-    } else {
-        Write-Error 'PowerShell64 No Found'
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline = $True)]
+        $_,
+        [parameter(ValueFromRemainingArguments = $True, Position = 0)]
+        [string[]]$Options = @()
+    )
+    begin {
+        $this = $PowerShell64
+        if (!$this) {
+            Write-Error 'Command No Found'
+            return
+        }
+    }
+    process {
+        $stdins += $_
+    }
+    end {
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
     }
 }
 
