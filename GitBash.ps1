@@ -1,18 +1,26 @@
 ﻿function Get-GitBash {
+    $shells = @()
     # check uninstall registory 
     $reg = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Git_is*'
     Get-ChildItem -Path $reg | 
+        Select-Object -First 1 |
         ForEach-Object {
             $root = $_.GetValue('InstallLocation')
-            $bash = Join-Path $root '/usr/bin/bash.exe'
-            if (Test-Path $bash) {
-                @{
-                    Path = $root
-                    Shell = $bash
-                    Note = @((Join-Path $reg (Split-Path -Leaf $_)), 'InstallLocation') 
-                }
-            }
+            $shell = Join-Path $root '/usr/bin/bash.exe'
+            $shells += @([ShellShifterInfomation]::new(
+                'gitbash',
+                $shell,
+                (Join-Path $reg (Split-Path -Leaf $_))
+            ))
+            # if (Test-Path $bash) {
+            #     @{
+            #         Path = $root
+            #         Shell = $bash
+            #         Note = @((Join-Path $reg (Split-Path -Leaf $_)), 'InstallLocation') 
+            #     }
+            # }
         }
+    $shells | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
 
 <#
@@ -25,12 +33,9 @@ function Invoke-GitBash {
         [parameter(ValueFromRemainingArguments = $true, Position = 0)]
         [string[]]$Options = @()
     )
-    $_ = Get-GitBash | Select-Object -First 1
+    $_ = Get-GitBash
     if ($_) {
-        if (!(Test-Path $_.Shell)) {
-            Write-Error 'GitBash Not Found'
-        }
-        $Env:Path = (join-path $_.Path '/usr/bin') + ';'　+ $Env:Path
+        $Env:Path = (join-path (Split-Path $_.Shell) '/usr/bin') + ';'　+ $Env:Path
         # see /etc/profile
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''

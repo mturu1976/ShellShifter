@@ -1,33 +1,33 @@
 ﻿function Get-Cygwin {
 
+    $shells = @()
+
     # check environment
     if ($ENV:CYGWIN_ROOT) {
         $root = $ENV:CYGWIN_ROOT
-        $bash = join-path $root '/bin/bash.exe'
-        @{
-            Path = $root
-            Shell = $bash 
-            Note = 'ENV:CYGWIN_ROOT'
-        }
+        $shell = join-path $root '/bin/bash.exe'
+        $shells += @([ShellShifterInfomation]::new(
+            'cygwin',
+            $shell,
+            ''
+        ))
     }
 
     # check last setup registory 
     # 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Cygwin\setup'
     $reg = 'HKLM:SOFTWARE\Cygwin\setup'
-    $root = Get-ItemPropertyValue -Path $reg -Name 'rootdir' -ErrorAction SilentlyContinue
-    if ($root) {
-        $bash = Join-Path $root '/bin/bash.exe'
-        if (Test-Path $bash) {
-            @{
-                Path = $root
-                Shell = $bash
-                Note = @($reg, 'rootdir')
-            }
+    if ([Environment]::Is64BitProcess) {
+        $root = Get-ItemPropertyValue -Path $reg -Name 'rootdir' -ErrorAction SilentlyContinue
+        if ($root) {
+            $shell = Join-Path $root '/bin/bash.exe'
+            $shells += @([ShellShifterInfomation]::new(
+                'cygwin',
+                $shell,
+                $reg
+            ))
         }
     }
-
-    if (![Environment]::Is64BitProcess) {
-        # check last setup registory 
+    else {
         $key = [Microsoft.Win32.RegistryKey]::OpenBaseKey(
             [Microsoft.Win32.RegistryHive]::LocalMachine,
             [Microsoft.Win32.RegistryView]::Registry64
@@ -35,16 +35,16 @@
         $prop = $key.OpenSubKey("SOFTWARE\Cygwin\setup")
         $root = $prop.GetValue("rootdir")
         if ($root) {
-            $bash = Join-Path $root '/bin/bash.exe'
-            if (Test-Path $bash) {
-                @{
-                    Path = $root
-                    Shell = $bash
-                    Note = @($reg, 'rootdir')
-                }
-            }
+            $shell = Join-Path $root '/bin/bash.exe'
+            $shells += @([ShellShifterInfomation]::new(
+                'cygwin',
+                $shell,
+                $reg
+            ))
         }
     }
+
+    $shells | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
 
 <#

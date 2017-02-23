@@ -24,37 +24,36 @@ function Invoke-PowerShell64 {
 
 function Get-PowerShell32() {
     $shell = if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\SysWOW64\WindowsPowerShell\v1.0\powershell.exe"
+        [ShellShifterInfomation]::new(
+            'posh32',
+            "$env:SystemRoot\SysWOW64\WindowsPowerShell\v1.0\powershell.exe",
+            ''
+        )
     } else {
-        "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+        [ShellShifterInfomation]::new(
+            'posh32',
+            "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe",
+            ''
+        )
     }   
-    @($shell |
-        Where-Object {Test-Path $_} | 
-        ForEach-Object {
-            [ShellShifterInfomation]::new(
-                'posh32',
-                $_
-            )
-        }
-    )
-    return $ret
+    $shell | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
 
 function Get-PowerShell64 {
     $shell = if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+        [ShellShifterInfomation]::new(
+            'posh64',
+            "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe",
+            ''
+        )
     } else {
-        "$env:SystemRoot\sysnative\WindowsPowerShell\v1.0\powershell.exe"
+        [ShellShifterInfomation]::new(
+            'posh64',
+            "$env:SystemRoot\sysnative\WindowsPowerShell\v1.0\powershell.exe",
+            ''
+        )
     }   
-    @($shell |
-        Where-Object {Test-Path $_} | 
-        ForEach-Object {
-            [ShellShifterInfomation]::new(
-                'posh64',
-                $_
-            )
-        }
-    )
+    $shell | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
 
 function Get-PowerShell {

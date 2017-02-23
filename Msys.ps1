@@ -1,40 +1,60 @@
 ﻿function Get-Msys {
 
+    $shells = @()
+
     # check environment
     if ($ENV:MSYS2_ROOT) {
         $root = $ENV:MSYS2_ROOT
-        $bash = join-path $root '/usr/bin/bash.exe'
-        @{
-            Path = $root
-            Shell = $bash
-            Note = 'ENV:MSYS2_ROOT'
-        }
+        $shell = join-path $root '/usr/bin/bash.exe'
+        $shells += @([ShellShifterInfomation]::new(
+            'msys',
+            $shell,
+            'ENV:MSYS2_ROOT'
+        ))
     }
 
     # check registory of uninstall
     $reg = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
     Get-ChildItem -Path $reg |
         Where-Object {$_.GetValue('Publisher') -eq 'The MSYS2 Developers'} |
+        Select-Object -First 1 |
         ForEach-Object {
             $root = $_.GetValue('InstallLocation')
-            $bash = Join-Path $root '/usr/bin/bash.exe'
-            if (Test-Path $bash) {
-                @{
-                    Path = $root
-                    Shell = $bash
-                    Note = @((Join-Path $reg (Split-Path -Leaf $_)), 'InstallLocation') 
-                }
-            }
+            $shell = Join-Path $root '/usr/bin/bash.exe'
+            $shells += @([ShellShifterInfomation]::new(
+                'msys',
+                $shell,
+                (Join-Path $reg (Split-Path -Leaf $_))
+            ))
+            # if (Test-Path $bash) {
+            #     @{
+            #         Path = $root
+            #         Shell = $bash
+            #         Note = @((Join-Path $reg (Split-Path -Leaf $_)), 'InstallLocation') 
+            #     }
+            # }
+        }
+
+    $shells | Where-Object {$_ -and (Test-Path $_.Shell)} |
+        ForEach-Object {
+            $_
+            [ShellShifterInfomation]::new(
+                'mingw32',
+                $_.Shell,
+                $_.Note
+            )
+            [ShellShifterInfomation]::new(
+                'mingw64',
+                $_.Shell,
+                $_.Note
+            )
         }
 }
 
 function Invoke-MsysShell ([string[]]$Options) {
-    $_ = Get-Msys | Select-Object -First 1
+    $_ = Get-Msys | Where-Object {$_.Command -eq 'msys'}
     if ($_) {
-        if (!(Test-Path $_.Shell)) {
-            Write-Error 'Bash Not Found'
-        }
-        $Env:Path = (join-path $_.Path '/usr/bin') + ';'　+ $Env:Path
+        $Env:Path = (join-path (Split-Path $_.Shell) '/usr/bin') + ';'　+ $Env:Path       
         # see /etc/profile
         $env:CHERE_INVOKING = 'true'
         $env:MSYS2_PATH_TYPE = ''

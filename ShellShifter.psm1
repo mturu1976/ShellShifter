@@ -4,15 +4,15 @@
 class ShellShifterInfomation {
     [string]$Command
     [string]$Shell
-    [string]$Path
     [string]$Note
 
     ShellShifterInfomation() {
     }
 
-    ShellShifterInfomation([string]$Command, [string]$Shell) {
+    ShellShifterInfomation([string]$Command, [string]$Shell, [string]$Note) {
         $this.Command = $Command
         $this.Shell = $Shell
+        $this.Note = $Note
     }
 }
 
@@ -25,26 +25,12 @@ class ShellShifterInfomation {
 . "$PSScriptRoot/Cygwin.ps1"
 
 function Get-ShellShifter {
-
-    ((Get-PowerShell) +
-        (Get-Cmd) +
-        (Get-BashOnWindows)) |
-        Format-Table |
-        Out-String |
-        write-host
-    
-    if (Get-Msys) {
-        write-host 'msys'
-        write-host 'mingw32'
-        write-host 'mingw64'
-    }
-
-    if (Get-GitBash) {
-        write-host 'gitbash'
-    }
-
-    if (Get-Cygwin) {
-        write-host 'cygwin'
-    }
+    Get-PowerShell
+    Get-Cmd
+    Get-BashOnWindows
+    Get-Msys
+    Get-GitBash
+    Get-Cygwin
+    # Format-Table | Out-String | write-host
 }
 

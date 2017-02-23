@@ -1,18 +1,19 @@
 ﻿
 function Get-BashOnWindows {
     $shell = if ([Environment]::Is64BitProcess) {
-        "$env:SystemRoot\System32\bash.exe"
+        [ShellShifterInfomation]::new(
+            'bow',
+            "$env:SystemRoot\System32\bash.exe",
+            ''
+        )
     } else {
-        "$env:SystemRoot\sysnative\bash.exe"
+        [ShellShifterInfomation]::new(
+            'bow',
+            "$env:SystemRoot\sysnative\bash.exe",
+            ''
+        )
     }
-    @($shell |
-        Where-Object {Test-Path $_} |
-        ForEach-Object {
-            [ShellShifterInfomation]::new(
-                'bow',
-                $_
-            )
-        })
+    @($shell | Where-Object {Test-Path $_.Shell})
 }
 
 <#
