@@ -16,34 +16,6 @@ class ShellShifterInfomation {
     }
 }
 
-function Invoke-ShellShifter {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $True, Postion = 0)]
-        [ShellShifter]$Info,
-        [Parameter(Mandatory = $True, Postion = 1)]
-        [string[]]$Options
-    )
-    begin {
-        $this = $Info
-        if (!$this) {
-            Write-Error 'Command No Found'
-            return
-        }
-    }
-    process {
-        $stdins += $_
-    }
-    end {
-        if ($stdins) {
-            $stdins | & $this.Shell $Options
-        } else {
-            & $this.Shell $Options
-        }
-    }
-}
-
-
 . "$PSScriptRoot/PowerShellxx.ps1"
 . "$PSScriptRoot/Cmdxx.ps1"
 . "$PSScriptRoot/BashOnWindows.ps1"
