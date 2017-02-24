@@ -1,0 +1,18 @@
+TOPIC
+    各種シェル(主にbash)を呼び出すための機能を提供しますabout_<subject or module name>
+
+SHORT DESCRIPTION
+    各種シェル(主にbash)を呼び出すための機能を提供します
+
+LONG DESCRIPTION
+    事前に特別な設定をしなくても直接、各種シェル(主にbash)を呼び出すための機能を提供します
+
+EXAMPLES
+    msys -c 'echo aaa'
+    echo 'echo aaa' | msys
+
+KEYWORDS
+    msys cygwin gitbash bash
+
+SEE ALSO
+    --

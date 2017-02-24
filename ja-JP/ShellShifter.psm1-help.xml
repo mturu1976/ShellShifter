@@ -1,0 +1,42 @@
+<!-- https://msdn.microsoft.com/ja-jp/library/bb525433(v=vs.85).aspx -->
+<command:command
+  xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+  xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" 
+  xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <!--Add name an synopsis here-->
+    details
+  </command:details>
+  <maml:description>
+    <!--Add detailed description here-->
+    description
+  </maml:description>
+  <command:syntax>
+    <!--Add syntax information here-->
+    syntax
+  </command:syntax>
+  <command:parameters>
+    <!--Add parameter information here-->
+    parameters
+  </command:parameters>
+  <command:inputTypes>
+    <!--Add input type information here-->
+    inputTypes
+  </command:inputTypes>
+  <command:returnValues>
+    <!--Add return value information here-->
+    returnValues
+  </command:returnValues>
+  <maml:alertSet>
+    <!--Add Note information here-->
+    :alertSet
+  </maml:alertSet>
+  <command:examples>
+    <!--Add cmdlet examples here-->
+    examples
+  </command:examples>
+  <maml:relatedLinks>
+    <!--Add links to related content here-->
+    relatedLinks
+  </maml:relatedLinks>
+</command:command>
