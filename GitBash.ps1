@@ -22,7 +22,6 @@ function Invoke-GitBash {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
-        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -37,13 +36,6 @@ function Invoke-GitBash {
         $stdins += $Stdin
     }
     end {
-        $Options = if ($NoLogin) {
-            $Options
-        } else {
-            '--login'
-            $Options
-        }
-
         $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path       
         # see /etc/profile
         $ENV:CHERE_INVOKING = 'true'

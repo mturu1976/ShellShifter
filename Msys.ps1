@@ -51,7 +51,6 @@ function Invoke-Msys {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
-        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -66,13 +65,6 @@ function Invoke-Msys {
         $stdins += $Stdin
     }
     end {
-        $Options = if ($NoLogin) {
-            $Options
-        } else {
-            '--login'
-            $Options
-        }
-        
         $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
         # see /etc/profile
         $ENV:MSYSTEM = 'MSYS'
@@ -93,7 +85,6 @@ function Invoke-Mingw32 {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
-        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -108,13 +99,6 @@ function Invoke-Mingw32 {
         $stdins += $Stdin
     }
     end {
-        $Options = if ($NoLogin) {
-            $Options
-        } else {
-            '--login'
-            $Options
-        }
-        
         $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
         # see /etc/profile
         $ENV:MSYSTEM = 'MINGW32'
@@ -135,7 +119,6 @@ function Invoke-Mingw64 {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
-        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -150,13 +133,6 @@ function Invoke-Mingw64 {
         $stdins += $Stdin
     }
     end {
-        $Options = if ($NoLogin) {
-            $Options
-        } else {
-            '--login'
-            $Options
-        }
-        
         $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
         # see /etc/profile
         $ENV:MSYSTEM = 'MINGW64'
