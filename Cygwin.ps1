@@ -47,34 +47,6 @@
     $shells | Where-Object {$_ -and (Test-Path $_.Shell)} | Select-Object -First 1
 }
 
-
-
-
-# <#
-# .SYNOPSIS
-# Cygwin の bash を実行します
-# .DESCRIPTION
-# 環境変数 CYGWIN_ROOT もしくはインストール情報を元にし Cygwin の bash を実行します
-# .PARAMETER NoLogin
-# nologin 起動の指定
-# .PARAMETER Options
-# bash のオプション
-# .INPUTS
-# シェルまたはシェルスクリプトへ渡す標準入力の内容
-# .OUTPUTS
-# System.Int32 正常終了した場合は 0 を、それ以外の場合は 1 を返します。
-# .EXAMPLE
-# cygwin -c './BashScript Foo Bar Baz'
-# .EXAMPLE
-# cygwin
-# .NOTES
-# 実行判定順位
-# 1. CYGWIN_ROOT
-# 2. レジストリ内にあるインストール情報
-# .LINK Nothing
-# #>
-
-
 #.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-Cygwin {
     [CmdletBinding()]
@@ -96,17 +68,17 @@ function Invoke-Cygwin {
         $stdins += $Stdin
     }
     end {
-        $ENV:CHERE_INVOKING = 'true'
-        # if (!$ENV:LANG) {$ENV:LANG = 'ja_JP.UTF-8'}
-        # if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}
-        # if (!$ENV:DISPLAY) {$ENV:DISPLAY = ':0.0'}
-
         $Options = if ($NoLogin) {
             $Options
         } else {
             '--login'
             $Options
         }
+
+        $ENV:CHERE_INVOKING = 'true'
+        # if (!$ENV:LANG) {$ENV:LANG = 'ja_JP.UTF-8'}
+        # if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}
+        # if (!$ENV:DISPLAY) {$ENV:DISPLAY = ':0.0'}
 
         if ($stdins) {
             $stdins | & $this.Shell $Options

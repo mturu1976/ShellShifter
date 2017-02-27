@@ -16,16 +16,12 @@ function Get-BashOnWindows {
     @($shell | Where-Object {Test-Path $_.Shell})
 }
 
-<#
-.SYNOPSIS Bash on Unbuntu on Windows を実行します
-.DESCRIPTION
-Bash on Unbuntu on Windows を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-BashOnWindows {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $True)]
-        $_,
+        [string]$Stdin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -37,7 +33,7 @@ function Invoke-BashOnWindows {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
         if ($stdins) {

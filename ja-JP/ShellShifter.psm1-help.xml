@@ -64,7 +64,7 @@
 	<command:details>
 		<command:name>Invoke-BashOnWindows</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>bash on ubuntu on windows の bash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -74,48 +74,48 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>bash on ubuntu on windows の bash を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-BashOnWindows</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -163,7 +163,7 @@
 	<command:details>
 		<command:name>Invoke-Cmd32</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>32ビット版 cmd を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -173,48 +173,48 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>32ビット版 cmd を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-Cmd32</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+			<dev:type>
+				<maml:name>Object</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -262,7 +262,7 @@
 	<command:details>
 		<command:name>Invoke-Cmd64</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>64ビット版 cmd を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -272,48 +272,48 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>64ビット版 cmd を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-Cmd64</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
-				<maml:name>options</maml:name>
+				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
-			<maml:name>options</maml:name>
+			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+			<dev:type>
+				<maml:name>Object</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -361,7 +361,7 @@
 	<command:details>
 		<command:name>Invoke-Cygwin</command:name>
 		<maml:description>
-			<maml:para>cygwinのbashを呼び出します</maml:para>
+			<maml:para>cygwin の bash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -371,7 +371,8 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>cygwinのbashを呼び出します</maml:para>
+		<maml:para>環境変数 CYGWIN_ROOT かインストール時のレジストリ情報を元に cygwin の bash を起動します
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -379,21 +380,23 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>NoLogin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>非ログインシェル
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
@@ -403,7 +406,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Stdin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>標準入力にする文字列</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -415,7 +418,8 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>NoLogin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>非ログインシェル
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -427,7 +431,8 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
@@ -468,10 +473,30 @@
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para>CYGWIN_ROOT かインストール時のレジストリ情報を元に探します</maml:para>
+			<maml:para />
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------    --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code></dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -481,7 +506,7 @@
 	<command:details>
 		<command:name>Invoke-GitBash</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>git for windows の gitbash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -491,48 +516,67 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>インストール情報を元に git for windows の gitbash を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-GitBash</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NoLogin</maml:name>
+				<maml:description>
+					<maml:para>非ログインシェル</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NoLogin</maml:name>
+			<maml:description>
+				<maml:para>非ログインシェル</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -580,7 +624,7 @@
 	<command:details>
 		<command:name>Invoke-Mingw32</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para> msys mingw32 の bash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -590,48 +634,67 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>インストール情報を元に msys mingw32 の bash を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-Mingw32</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NoLogin</maml:name>
+				<maml:description>
+					<maml:para>非ログインシェル</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NoLogin</maml:name>
+			<maml:description>
+				<maml:para>非ログインシェル</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -679,7 +742,7 @@
 	<command:details>
 		<command:name>Invoke-Mingw64</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>msys mingw64 の bash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -689,48 +752,67 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>インストール情報を元に msys mingw64 の bash を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-Mingw64</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NoLogin</maml:name>
+				<maml:description>
+					<maml:para>非ログインシェル</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NoLogin</maml:name>
+			<maml:description>
+				<maml:para>非ログインシェル</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -778,7 +860,7 @@
 	<command:details>
 		<command:name>Invoke-Msys</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>msys の bash を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -788,48 +870,67 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>インストール情報を元に msys の bash を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-Msys</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
+				<maml:description>
+					<maml:para>標準入力にする文字列</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NoLogin</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NoLogin</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -877,7 +978,7 @@
 	<command:details>
 		<command:name>Invoke-PowerShell32</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>32ビット版 powershell を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -887,48 +988,48 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>32ビット版 powershell を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-PowerShell32</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+			<dev:type>
+				<maml:name>Object</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -976,7 +1077,7 @@
 	<command:details>
 		<command:name>Invoke-PowerShell64</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>64ビット版 powershell を起動します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -986,48 +1087,48 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>64ビット版 powershell を起動します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Invoke-PowerShell64</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>_</maml:name>
+				<maml:name>Stdin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>標準入力にする文字列</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Options</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>_</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-			<dev:type>
-				<maml:name>Object</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Options</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>シェルに渡すコマンドラインオプション</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Stdin</maml:name>
+			<maml:description>
+				<maml:para>標準入力にする文字列</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+			<dev:type>
+				<maml:name>Object</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>

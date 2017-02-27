@@ -39,16 +39,12 @@ function Get-Cmd {
     Get-Cmd64
 }
 
-<#
-.SYNOPSIS 32ビット版 cmd を実行します
-.DESCRIPTION
-32ビット版 cmd を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-Cmd32 {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $True)]
-        $_,
+        $Stdin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -60,7 +56,7 @@ function Invoke-Cmd32 {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
         if ($stdins) {
@@ -71,18 +67,14 @@ function Invoke-Cmd32 {
     }
 }
 
-<#
-.SYNOPSIS 64ビット版 cmd を実行します
-.DESCRIPTION
-64ビット版 cmd を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-Cmd64 {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline=$True)]
-        $_,
+        $Stdin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
-        [string[]]$options = @()
+        [string[]]$Options = @()
     )
     begin {
         $this = $Cmd64
@@ -92,7 +84,7 @@ function Invoke-Cmd64 {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
         if ($stdins) {

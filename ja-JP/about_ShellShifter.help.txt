@@ -1,11 +1,11 @@
 TOPIC
-    各種シェル(主にbash)を呼び出すための機能を提供しますabout_<subject or module name>
+    各種シェル(主にbash)を起動する為の機能を提供します
 
 SHORT DESCRIPTION
-    各種シェル(主にbash)を呼び出すための機能を提供します
+    各種シェル(主にbash)を起動する為の機能を提供します
 
 LONG DESCRIPTION
-    事前に特別な設定をしなくても直接、各種シェル(主にbash)を呼び出すための機能を提供します
+    特別な設定をしなくても自動的にインストール済みのアプリケーションを判別し、各種シェル(主にbash)を起動することが出来ます。
 
 EXAMPLES
     msys -c 'echo aaa'

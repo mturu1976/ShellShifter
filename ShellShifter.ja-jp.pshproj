@@ -35,11 +35,11 @@
     <CmdletObject verb="Invoke" noun="BashOnWindows">
       <Name>Invoke-BashOnWindows</Name>
       <Syntax>
-        <string>Invoke-BashOnWindows [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-BashOnWindows [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>bash on ubuntu on windows の bash を起動します</Synopsis>
+        <Description>bash on ubuntu on windows の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -49,18 +49,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -68,7 +59,17 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -80,11 +81,11 @@
     <CmdletObject verb="Invoke" noun="Cmd32">
       <Name>Invoke-Cmd32</Name>
       <Syntax>
-        <string>Invoke-Cmd32 [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Cmd32 [-Stdin &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>32ビット版 cmd を起動します</Synopsis>
+        <Description>32ビット版 cmd を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -94,18 +95,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -113,7 +105,16 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -125,11 +126,11 @@
     <CmdletObject verb="Invoke" noun="Cmd64">
       <Name>Invoke-Cmd64</Name>
       <Syntax>
-        <string>Invoke-Cmd64 [-_ &lt;Object&gt;] [[-options] &lt;String[]&gt;]</string>
+        <string>Invoke-Cmd64 [-Stdin &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>64ビット版 cmd を起動します</Synopsis>
+        <Description>64ビット版 cmd を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -139,26 +140,26 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
-          <Name>options</Name>
+          <Name>Options</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -173,9 +174,10 @@
         <string>Invoke-Cygwin [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis>cygwinのbashを呼び出します</Synopsis>
-        <Description>cygwinのbashを呼び出します</Description>
-        <Notes>CYGWIN_ROOT かインストール時のレジストリ情報を元に探します</Notes>
+        <Synopsis>cygwin の bash を起動します</Synopsis>
+        <Description>環境変数 CYGWIN_ROOT かインストール時のレジストリ情報を元に cygwin の bash を起動します
+</Description>
+        <Notes />
         <InputType>string</InputType>
         <InputUrl />
         <InputTypeDescription>標準入力となる文字列
@@ -196,7 +198,7 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -206,7 +208,8 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>非ログインシェル
+</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
@@ -216,11 +219,19 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション
+</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
-      <Examples />
+      <Examples>
+        <Example>
+          <Name />
+          <Cmd />
+          <Description />
+          <Output />
+        </Example>
+      </Examples>
       <RelatedLinks />
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
@@ -228,11 +239,11 @@
     <CmdletObject verb="Invoke" noun="GitBash">
       <Name>Invoke-GitBash</Name>
       <Syntax>
-        <string>Invoke-GitBash [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-GitBash [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>git for windows の gitbash を起動します</Synopsis>
+        <Description>インストール情報を元に git for windows の gitbash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -242,18 +253,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -261,7 +263,27 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>非ログインシェル</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -273,11 +295,11 @@
     <CmdletObject verb="Invoke" noun="Mingw32">
       <Name>Invoke-Mingw32</Name>
       <Syntax>
-        <string>Invoke-Mingw32 [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Mingw32 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis> msys mingw32 の bash を起動します</Synopsis>
+        <Description>インストール情報を元に msys mingw32 の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -287,18 +309,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -306,7 +319,27 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>非ログインシェル</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -318,11 +351,11 @@
     <CmdletObject verb="Invoke" noun="Mingw64">
       <Name>Invoke-Mingw64</Name>
       <Syntax>
-        <string>Invoke-Mingw64 [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Mingw64 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>msys mingw64 の bash を起動します</Synopsis>
+        <Description>インストール情報を元に msys mingw64 の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -332,18 +365,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -351,7 +375,27 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>非ログインシェル</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -363,11 +407,11 @@
     <CmdletObject verb="Invoke" noun="Msys">
       <Name>Invoke-Msys</Name>
       <Syntax>
-        <string>Invoke-Msys [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Msys [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>msys の bash を起動します</Synopsis>
+        <Description>インストール情報を元に msys の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -377,20 +421,31 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
@@ -408,11 +463,11 @@
     <CmdletObject verb="Invoke" noun="PowerShell32">
       <Name>Invoke-PowerShell32</Name>
       <Syntax>
-        <string>Invoke-PowerShell32 [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-PowerShell32 [-Stdin &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>32ビット版 powershell を起動します</Synopsis>
+        <Description>32ビット版 powershell を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -422,18 +477,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -441,7 +487,16 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -453,11 +508,11 @@
     <CmdletObject verb="Invoke" noun="PowerShell64">
       <Name>Invoke-PowerShell64</Name>
       <Syntax>
-        <string>Invoke-PowerShell64 [-_ &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-PowerShell64 [-Stdin &lt;Object&gt;] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>64ビット版 powershell を起動します</Synopsis>
+        <Description>64ビット版 powershell を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -467,18 +522,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="_ Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
-        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>_</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
           <Name>Options</Name>
           <Attributes>
@@ -486,7 +532,16 @@
             <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>シェルに渡すコマンドラインオプション</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Object" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Stdin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>

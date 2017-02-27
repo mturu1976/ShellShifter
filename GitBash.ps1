@@ -16,16 +16,13 @@
     $shells | Where-Object {$_ -and (Test-Path $_.Shell)}
 }
 
-<#
-.SYNOPSIS GitBash の Mingw64 を実行します
-.DESCRIPTION
-GitBash の Mingw64 を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-GitBash {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $True)]
-        $_,
+        [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -37,23 +34,22 @@ function Invoke-GitBash {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
-        $Options = if ($Options -contains '--no-login') {
-            $Options | Where-Object {'--no-login', '--login', '-l' -notcontains $_}
+        $Options = if ($NoLogin) {
+            $Options
         } else {
             '--login'
             $Options
         }
 
-        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path       
         # see /etc/profile
         $ENV:CHERE_INVOKING = 'true'
         $ENV:MSYS2_PATH_TYPE = ''
         $ENV:MSYSTEM = 'MINGW64'
 
-        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path       
         if ($stdins) {
             $stdins | & $this.Shell $Options
         } else {

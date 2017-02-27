@@ -1,15 +1,11 @@
 ﻿using namespace System.Collections.Generic
 
-<#
-.SYNOPSIS 32ビット版 powershell を実行します
-.DESCRIPTION
-32ビット版 powershell を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-PowerShell32 {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $True)]
-        $_,
+        $Stdin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -21,7 +17,7 @@ function Invoke-PowerShell32 {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
         if ($stdins) {
@@ -32,16 +28,12 @@ function Invoke-PowerShell32 {
     }
 }
 
-<#
-.SYNOPSIS 64ビット版 powershell を実行します
-.DESCRIPTION
-64ビット版 powershell を実行します
-#>
+#.ExternalHelp ShellShifter.psm1-help.xml
 function Invoke-PowerShell64 {
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $True)]
-        $_,
+        $Stdin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -53,7 +45,7 @@ function Invoke-PowerShell64 {
         }
     }
     process {
-        $stdins += $_
+        $stdins += $Stdin
     }
     end {
         if ($stdins) {
