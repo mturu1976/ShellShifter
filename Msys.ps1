@@ -31,6 +31,7 @@ function Get-Msys {
 
     # only exists
     $shells | Where-Object {$_ -and (Test-Path $_.Shell)} |
+        Select-Object -First 1 |
         ForEach-Object {
             $_
             [ShellShifterInfomation]::new(
@@ -57,7 +58,7 @@ function Invoke-Msys {
         [string[]]$Options = @()
     )
     begin {
-        $this = Get-Msys | Where-Object {$_.Command -eq 'msys'}
+        $this = Get-Msys | Select-Object -First 1
         if (!$this) {
             Write-Error 'Command No Found'
             return
@@ -103,7 +104,7 @@ function Invoke-Mingw32 {
         [string[]]$Options = @()
     )
     begin {
-        $this = Get-Msys | Where-Object {$_.Command -eq 'msys'}
+        $this = Get-Msys | Select-Object -First 1
         if (!$this) {
             Write-Error 'Command No Found'
             return
@@ -149,7 +150,7 @@ function Invoke-Mingw64 {
         [string[]]$Options = @()
     )
     begin {
-        $this = Get-Msys | Where-Object {$_.Command -eq 'msys'}
+        $this = Get-Msys | Select-Object -First 1
         if (!$this) {
             Write-Error 'Command No Found'
             return
