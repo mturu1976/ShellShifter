@@ -171,7 +171,7 @@
     <CmdletObject verb="Invoke" noun="Cygwin">
       <Name>Invoke-Cygwin</Name>
       <Syntax>
-        <string>Invoke-Cygwin [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Cygwin [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
         <Synopsis>cygwin の bash を起動します</Synopsis>
@@ -188,7 +188,7 @@
         <ReturnTypeDescription>0 実行成功;それ以外は何かしらの失敗</ReturnTypeDescription>
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -212,6 +212,16 @@
 </Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>ログインしない</Description>
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -228,7 +238,7 @@
     <CmdletObject verb="Invoke" noun="GitBash">
       <Name>Invoke-GitBash</Name>
       <Syntax>
-        <string>Invoke-GitBash [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-GitBash [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
         <Synopsis>git for windows の gitbash を起動します</Synopsis>
@@ -242,7 +252,7 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
@@ -265,6 +275,16 @@
           <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>ログインしない</Description>
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
@@ -274,7 +294,7 @@
     <CmdletObject verb="Invoke" noun="Mingw32">
       <Name>Invoke-Mingw32</Name>
       <Syntax>
-        <string>Invoke-Mingw32 [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Mingw32 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
         <Synopsis> msys mingw32 の bash を起動します</Synopsis>
@@ -288,7 +308,7 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
@@ -311,6 +331,16 @@
           <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>ログインしない</Description>
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
@@ -320,7 +350,7 @@
     <CmdletObject verb="Invoke" noun="Mingw64">
       <Name>Invoke-Mingw64</Name>
       <Syntax>
-        <string>Invoke-Mingw64 [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Mingw64 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
         <Synopsis>msys mingw64 の bash を起動します</Synopsis>
@@ -334,7 +364,7 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
@@ -357,6 +387,16 @@
           <Description>標準入力にする文字列</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>ログインしない</Description>
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
@@ -366,7 +406,7 @@
     <CmdletObject verb="Invoke" noun="Msys">
       <Name>Invoke-Msys</Name>
       <Syntax>
-        <string>Invoke-Msys [-Stdin &lt;String&gt;] [[-Options] &lt;String[]&gt;]</string>
+        <string>Invoke-Msys [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
         <Synopsis>msys の bash を起動します</Synopsis>
@@ -380,7 +420,7 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Stdin NoLogin Options Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Parameters>
         <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="true" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
@@ -401,6 +441,16 @@
           </Attributes>
           <Aliases />
           <Description>標準入力にする文字列</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>NoLogin</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ArgumentTypeConverterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>ログインしない</Description>
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
