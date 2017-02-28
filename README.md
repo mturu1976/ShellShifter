@@ -35,4 +35,4 @@ gitbash -c 'ls'
 
 # License
 
-[MIT License](https://github.com/m5knt/ShellShifter/blob/master/LICENSE) (C) Yukio 'm5knt' KANEDA
+[MIT License](https://github.com/m5knt/ShellShifter/blob/master/LICENSE) (C) Yukio "m5knt" KANEDA
