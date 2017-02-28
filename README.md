@@ -12,26 +12,29 @@ ShellShifter はシェルへのエリアスのように動作しコマンドラ�
 
 ## Usage
 
-```
-cmd32 /c 'dir'
-cmd64 /c 'dir'
-posh32 -c 'dir'
-posh64 -c 'dir'
-msys -c 'ls'
-mingw32 -c 'ls'
-mingw64 -c 'ls'
-cygwin -c 'ls'
-gitbash -c 'ls'
-```
+コマンドラインから次のように呼び出す事が出来ます。
+
+>msys
+
+>msys -c 'ls'
+
+Explorer のアドレス入力などコマンドを受け付ける所で powershell -c 'msys' 等で呼び出すことができます。
 
 ## Support Shells
 
-- Cmd (x86, x64)
-- PowerShell (x86, x64)
-- [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) / Bash
-- [Cygwin](https://cygwin.com/) / Bash 
-- [Msys2](http://www.msys2.org/) / Bash
-- [GitBash](https://git-for-windows.github.io/) / Bash
+| Shells                          | Command | SeeAlso |
+|---------------------------------|---------|---------|
+| Cmd (x86)                       | cmd32   | |
+| Cmd (x64)                       | cmd64   | |
+| Powershell (x86)                | posh32  | |
+| Powershell (x64)                | posh64  | |
+| Bash on Ubuntu On Windows (WSL) | bow     | https://msdn.microsoft.com/commandline/wsl/about |
+| Msys2                           | msys    | http://www.msys2.org/ |
+| Msys2 (Mingw32)                 | mingw32 | |
+| Msys2 (Mingw64)                 | mingw64 | |
+| Git for Windows (GitBash)       | gitbash | https://git-for-windows.github.io/ |
+| Cygwin                          | cygwin  | https://cygwin.com/ |
+| | |
 
 # License
 
