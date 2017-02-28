@@ -9,12 +9,13 @@
         $shells += @([ShellShifterInfomation]::new(
             'cygwin',
             $shell,
-            ''
+            '$ENV:CYGWIN_ROOT'
         ))
     }
 
     # check last setup registory 
     # 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Cygwin\setup'
+    $reg = 'HKLM:\SOFTWARE\Cygwin\setup'
     $key = [Microsoft.Win32.RegistryKey]::OpenBaseKey(
         [Microsoft.Win32.RegistryHive]::LocalMachine,
         [Microsoft.Win32.RegistryView]::Registry64
@@ -32,7 +33,6 @@
         }
     }
 
-    $reg = 'HKLM:SOFTWARE\Cygwin\setup'
     Get-ItemPropertyValue -Path $reg -Name 'rootdir' -ErrorAction SilentlyContinue |
         ForEach-Object {
             $shell = Join-Path $_ '/bin/bash.exe'

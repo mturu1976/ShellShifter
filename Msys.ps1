@@ -10,7 +10,7 @@ function Get-Msys {
         $shells += @([ShellShifterInfomation]::new(
             'msys',
             $shell,
-            'ENV:MSYS2_ROOT'
+            '$ENV:MSYS2_ROOT'
         ))
     }
 
