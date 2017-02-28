@@ -76,18 +76,18 @@ function Invoke-Msys {
 
         # $prev = $ENV:Path
         # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
-        {
-            # see /etc/profile
-            $ENV:MSYSTEM = 'MSYS'
-            $ENV:CHERE_INVOKING = 'true'
-            $ENV:MSYS2_PATH_TYPE = 'inherit' # strict / inherit
 
-            if ($stdins) {
-                $stdins | & $this.Shell $Options
-            } else {
-                & $this.Shell $Options
-            }
+        # see /etc/profile
+        $ENV:MSYSTEM = 'MSYS'
+        $ENV:CHERE_INVOKING = 'true'
+        $ENV:MSYS2_PATH_TYPE = 'inherit' # strict / inherit
+
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
         }
+
         # $ENV:Path = $prev
     }
 }
@@ -122,18 +122,18 @@ function Invoke-Mingw32 {
 
         # $prev = $ENV:Path
         # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
-        {
-            # see /etc/profile
-            $ENV:MSYSTEM = 'MINGW32'
-            $ENV:CHERE_INVOKING = 'true'
-            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
 
-            if ($stdins) {
-                $stdins | & $this.Shell $Options
-            } else {
-                & $this.Shell $Options
-            }
+        # see /etc/profile
+        $ENV:MSYSTEM = 'MINGW32'
+        $ENV:CHERE_INVOKING = 'true'
+        $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
         }
+
         # $ENV:Path = $prev
     }
 }
@@ -168,18 +168,18 @@ function Invoke-Mingw64 {
 
         # $prev = $ENV:Path
         # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
-        {
-            # see /etc/profile
-            $ENV:MSYSTEM = 'MINGW64'
-            $ENV:CHERE_INVOKING = 'true'
-            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
 
-            if ($stdins) {
-                $stdins | & $this.Shell $Options
-            } else {
-                & $this.Shell $Options
-            }
+        # see /etc/profile
+        $ENV:MSYSTEM = 'MINGW64'
+        $ENV:CHERE_INVOKING = 'true'
+        $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
         }
+
         # $ENV:Path = $prev
     }
 }

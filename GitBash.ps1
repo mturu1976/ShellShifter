@@ -46,22 +46,22 @@ function Invoke-GitBash {
 
         # $prev = $ENV:Path
         # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
-        {
-            # see /etc/profile
-            $ENV:CHERE_INVOKING = 'true'
-            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
-            $ENV:MSYSTEM = if ([Environment]::Is64BitProcess) {
-                'MINGW64'
-            } else {
-                'MINGW32'
-            }
 
-            if ($stdins) {
-                $stdins | & $this.Shell $Options
-            } else {
-                & $this.Shell $Options
-            }
+        # see /etc/profile
+        $ENV:CHERE_INVOKING = 'true'
+        $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+        $ENV:MSYSTEM = if ([Environment]::Is64BitProcess) {
+            'MINGW64'
+        } else {
+            'MINGW32'
         }
+
+        if ($stdins) {
+            $stdins | & $this.Shell $Options
+        } else {
+            & $this.Shell $Options
+        }
+
         # $ENV:Path = $prev
     }
 }
