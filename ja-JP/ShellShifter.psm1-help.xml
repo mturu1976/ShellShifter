@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Get-ShellShifter</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>実行可能なシェルを返します</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>実行可能なシェルを返します</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>

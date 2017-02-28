@@ -13,8 +13,8 @@
         <string>Get-ShellShifter</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>実行可能なシェルを返します</Synopsis>
+        <Description>実行可能なシェルを返します</Description>
         <Notes />
         <InputType />
         <InputUrl />

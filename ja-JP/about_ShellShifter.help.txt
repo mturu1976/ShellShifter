@@ -1,18 +1,26 @@
 TOPIC
-    各種シェル(主にbash)を起動する為の機能を提供します
+    各種シェルを起動する為の機能を提供します
 
 SHORT DESCRIPTION
-    各種シェル(主にbash)を起動する為の機能を提供します
+    各種シェルを起動する為の機能を提供します
 
 LONG DESCRIPTION
-    特別な設定をしなくても自動的にインストール済みのアプリケーションを判別し、各種シェル(主にbash)を起動することが出来ます。
+    特別な設定をしなくても自動的にインストール済みのアプリケーションを判別し、各種シェルを起動することが出来ます。
+    cmd と powershell には32ビット版と64ビット版がありますがそれらをコマンドラインから明示的に呼び出すこともできます。
 
 EXAMPLES
-    msys -c 'echo aaa'
-    echo 'echo aaa' | msys
+    cmd32 /c 'dir'
+    cmd64 /c 'dir'
+    posh32 -c 'dir'
+    posh64 -c 'dir'
+    msys -c 'ls'
+    mingw32 -c 'ls'
+    mingw64 -c 'ls'
+    cygwin -c 'ls'
+    gitbash -c 'ls'
 
 KEYWORDS
-    msys cygwin gitbash bash
+    bow wsl gitbash msys msys2 mingw mingw32 mingw64 cygwin bash shell
 
 SEE ALSO
-    --
+    https://github.com/m5knt/ShellShifter/blob/master/README.md
