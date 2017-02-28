@@ -52,6 +52,7 @@ function Invoke-Cygwin {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -66,6 +67,13 @@ function Invoke-Cygwin {
         $stdins += $Stdin
     }
     end {
+        $Options = if ($NoLogin) {
+            $Options
+        } else {
+            '--login'
+            $Options
+        }
+
         $ENV:CHERE_INVOKING = 'true'
         # if (!$ENV:LANG) {$ENV:LANG = 'ja_JP.UTF-8'}
         # if (!$ENV:CYGWIN) {$ENV:CYGWIN = 'nodosfilewarning'}

@@ -22,6 +22,7 @@ function Invoke-GitBash {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -36,17 +37,32 @@ function Invoke-GitBash {
         $stdins += $Stdin
     }
     end {
-        $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path       
-        # see /etc/profile
-        $ENV:CHERE_INVOKING = 'true'
-        $ENV:MSYS2_PATH_TYPE = ''
-        $ENV:MSYSTEM = 'MINGW64'
-
-        if ($stdins) {
-            $stdins | & $this.Shell $Options
+        $Options = if ($NoLogin) {
+            $Options
         } else {
-            & $this.Shell $Options
+            '--login'
+            $Options
         }
+
+        # $prev = $ENV:Path
+        # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        {
+            # see /etc/profile
+            $ENV:CHERE_INVOKING = 'true'
+            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+            $ENV:MSYSTEM = if ([Environment]::Is64BitProcess) {
+                'MINGW64'
+            } else {
+                'MINGW32'
+            }
+
+            if ($stdins) {
+                $stdins | & $this.Shell $Options
+            } else {
+                & $this.Shell $Options
+            }
+        }
+        # $ENV:Path = $prev
     }
 }
 

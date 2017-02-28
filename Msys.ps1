@@ -1,4 +1,5 @@
-﻿function Get-Msys {
+﻿using namespace System
+function Get-Msys {
 
     $shells = @()
 
@@ -51,6 +52,7 @@ function Invoke-Msys {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -65,17 +67,28 @@ function Invoke-Msys {
         $stdins += $Stdin
     }
     end {
-        $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
-        # see /etc/profile
-        $ENV:MSYSTEM = 'MSYS'
-        $env:CHERE_INVOKING = 'true'
-        $env:MSYS2_PATH_TYPE = ''
-
-        if ($stdins) {
-            $stdins | & $this.Shell $Options
+        $Options = if ($NoLogin) {
+            $Options
         } else {
-            & $this.Shell $Options
+            '--login'
+            $Options
         }
+
+        # $prev = $ENV:Path
+        # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        {
+            # see /etc/profile
+            $ENV:MSYSTEM = 'MSYS'
+            $ENV:CHERE_INVOKING = 'true'
+            $ENV:MSYS2_PATH_TYPE = 'inherit' # strict / inherit
+
+            if ($stdins) {
+                $stdins | & $this.Shell $Options
+            } else {
+                & $this.Shell $Options
+            }
+        }
+        # $ENV:Path = $prev
     }
 }
 
@@ -85,6 +98,7 @@ function Invoke-Mingw32 {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -99,17 +113,28 @@ function Invoke-Mingw32 {
         $stdins += $Stdin
     }
     end {
-        $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
-        # see /etc/profile
-        $ENV:MSYSTEM = 'MINGW32'
-        $env:CHERE_INVOKING = 'true'
-        $env:MSYS2_PATH_TYPE = ''
-
-        if ($stdins) {
-            $stdins | & $this.Shell $Options
+        $Options = if ($NoLogin) {
+            $Options
         } else {
-            & $this.Shell $Options
+            '--login'
+            $Options
         }
+
+        # $prev = $ENV:Path
+        # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        {
+            # see /etc/profile
+            $ENV:MSYSTEM = 'MINGW32'
+            $ENV:CHERE_INVOKING = 'true'
+            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+
+            if ($stdins) {
+                $stdins | & $this.Shell $Options
+            } else {
+                & $this.Shell $Options
+            }
+        }
+        # $ENV:Path = $prev
     }
 }
 
@@ -119,6 +144,7 @@ function Invoke-Mingw64 {
     param (
         [Parameter(ValueFromPipeline = $True)]
         [string]$Stdin,
+        [switch]$NoLogin,
         [parameter(ValueFromRemainingArguments = $True, Position = 0)]
         [string[]]$Options = @()
     )
@@ -133,17 +159,28 @@ function Invoke-Mingw64 {
         $stdins += $Stdin
     }
     end {
-        $env:Path = (Split-Path $this.Shell) + ';'　+ $Env:Path
-        # see /etc/profile
-        $ENV:MSYSTEM = 'MINGW64'
-        $env:CHERE_INVOKING = 'true'
-        $env:MSYS2_PATH_TYPE = ''
-
-        if ($stdins) {
-            $stdins | & $this.Shell $Options
+        $Options = if ($NoLogin) {
+            $Options
         } else {
-            & $this.Shell $Options
+            '--login'
+            $Options
         }
+
+        # $prev = $ENV:Path
+        # $ENV:Path = (Split-Path $this.Shell) + ';'　+ $ENV:Path
+        {
+            # see /etc/profile
+            $ENV:MSYSTEM = 'MINGW64'
+            $ENV:CHERE_INVOKING = 'true'
+            $ENV:MSYS2_PATH_TYPE = 'inherit'　# strict / inherit
+
+            if ($stdins) {
+                $stdins | & $this.Shell $Options
+            } else {
+                & $this.Shell $Options
+            }
+        }
+        # $ENV:Path = $prev
     }
 }
 
