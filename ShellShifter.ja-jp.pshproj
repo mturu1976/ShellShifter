@@ -297,8 +297,8 @@
         <string>Invoke-Mingw32 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis> msys mingw32 の bash を起動します</Synopsis>
-        <Description>インストール情報を元に msys mingw32 の bash を起動します</Description>
+        <Synopsis>msys2 (mingw32) の bash を起動します</Synopsis>
+        <Description>環境変数 MSYS2_ROOT かインストール時のレジストリ情報を元に msys2 (mingw32) の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -353,8 +353,8 @@
         <string>Invoke-Mingw64 [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis>msys mingw64 の bash を起動します</Synopsis>
-        <Description>インストール情報を元に msys mingw64 の bash を起動します</Description>
+        <Synopsis>msys2 (mingw64) の bash を起動します</Synopsis>
+        <Description>環境変数 MSYS2_ROOT かインストール時のレジストリ情報を元に msys2 (mingw64) の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -409,8 +409,8 @@
         <string>Invoke-Msys [-Stdin &lt;String&gt;] [-NoLogin] [[-Options] &lt;String[]&gt;]</string>
       </Syntax>
       <GeneralHelp>
-        <Synopsis>msys の bash を起動します</Synopsis>
-        <Description>インストール情報を元に msys の bash を起動します</Description>
+        <Synopsis>msys2 の bash を起動します</Synopsis>
+        <Description>環境変数 MSYS2_ROOT かインストール時のレジストリ情報を元に msys2 の bash を起動します</Description>
         <Notes />
         <InputType />
         <InputUrl />
